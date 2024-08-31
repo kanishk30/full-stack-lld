@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function parent() {
+            var a = 100;
+            var b = 20;
+            console.log(b)
+            function child() {
+                console.log(a)
+                console.log(b)
+            }
+            return child
+        }
+
+        const returnedFn = parent()
+        returnedFn()
+    </script>
+</body>
+
+</html>

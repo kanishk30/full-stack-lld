@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .m1.m2 {
+            color: red;
+        }
+
+        .m1,
+        .m2 {
+            color: blue;
+        }
+
+        .special {
+            color: green;
+        }
+
+        .special.name {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="m1 m2">
+        Select Me
+        <!-- <span class="m2">I am special</span> -->
+    </div>
+
+    <div class="m1">
+        Select Me Maybe?
+    </div>
+
+    <div class="m2">
+        Don't select me.
+    </div>
+
+    <div class="special name">
+        1 <!-- <span class="m2">I am special</span> -->
+    </div>
+
+    <div class="special">
+        2 <!-- <span class="m2">I am special</span> -->
+    </div>
+
+    <div class="name">
+        2 <!-- <span class="m2">I am special</span> -->
+    </div>
+
+</body>
+
+</html>

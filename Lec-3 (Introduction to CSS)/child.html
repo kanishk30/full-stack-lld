@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Select ALL li elements which are descendents of div */
+        div li {
+            color: red;
+        }
+
+        div .special {
+            color: green;
+        }
+
+        /* #special {
+            color: red;
+        } */
+
+        div h1 span {}
+
+        div>h1>span {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Add style to the span tag and make it blue -->
+    <div>
+        <h1>
+            <span id="special">I am the direct son</span>
+        </h1>
+    </div>
+
+    <div>
+        <span>
+            <h1>
+                <span>I am the in-direct son</span>
+            </h1>
+        </span>
+
+    </div>
+</body>
+
+</html>

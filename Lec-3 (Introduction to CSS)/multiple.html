@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .m1 .m2 {
+
+        } */
+
+        .m1.m2 {
+            color: red;
+        }
+
+        /* 
+        span,
+        p,
+        div {
+            color: red;
+        } */
+
+        /* .m1,
+        .m2 {
+            color: blue;
+        } */
+        /* 
+        This is not selecting anything
+        As there are no .m2 which are descendents of .m1 */
+        .m1 .m2 {
+            color: red
+        }
+
+        .m1,
+        .m2 {
+            color: red
+        }
+
+        .m1,
+        .m2 {
+            color: blue
+        }
+    </style>
+</head>
+
+<body>
+    <div class="m1 m2">
+        Select Me
+        <!-- <span class="m2">I am special</span> -->
+    </div>
+
+    <div class="m1">
+        Select Me Maybe?
+    </div>
+
+    <div class="m2">
+        Don't select me.
+    </div>
+
+</body>
+
+</html>

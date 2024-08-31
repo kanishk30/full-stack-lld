@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Internal CSS -->
+
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+        h1 {
+            color: red;
+        }
+
+        h2 {
+            color: blue;
+        }
+
+        body {
+            background-image: url("https://variety.com/wp-content/uploads/2018/11/spider-man-into-the-spider-verse-e1543416140763.jpg?w=891");
+            background-size: cover;
+        }
+
+        /* p {
+            border: 1px solid red;
+        } */
+
+        p {
+            border: 1px solid rosybrown;
+        }
+
+        #special {
+            border: 1px solid royalblue;
+        }
+
+        .border {
+            border: 1px solid red;
+        }
+
+        /* 
+        button {
+            background-color: blueviolet;
+        } */
+
+        /* This will override the previous style
+        Because of the cascading nature of CSS
+        & because we are using the exact same selector */
+        /* button {
+            background-color: red;
+        } */
+
+        button {
+            color: red;
+            background-color: white;
+        }
+
+        div {
+            border: 1px solid red;
+            height: 300px;
+            width: 400px;
+            background-image: url("https://variety.com/wp-content/uploads/2018/11/spider-man-into-the-spider-verse-e1543416140763.jpg?w=891");
+            /* background-size: 200px;
+            /* background-repeat: no-repeat; */
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <p class="border">This is a paragraph</p>
+
+    <p class="border">This is a paragraph too</p>
+
+    <p class="border" id="special">This is a third paragraph too</p> -->
+
+    <button>Submit</button>
+
+    <div style="display: flex; align-items: flex-end; justify-content: center;">
+        <p>Some text here</p>
+    </div>
+    <!-- <h2 style="color: blue;">I want the H2 to be blue, but H1 to be red</h2> -->
+</body>
+
+</html>

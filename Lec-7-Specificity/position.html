@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 240vh;
+        }
+
+        .card {
+            height: 200px;
+            width: 200px;
+            background-color: blanchedalmond;
+            padding: 10px;
+            border: 2px solid black;
+        }
+
+        .container {
+            border: 1px solid red;
+            position: relative;
+        }
+
+        #special {
+            /* This is the default position for elements
+            You can't move an element if you use static */
+            /* position: static;
+            top: 10px; */
+            /* bottom: 10px; */
+            /* left: 10px; */
+            /* right: 10px; */
+
+            /* position: absolute; */
+            top: 0;
+            right: 0;
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: antiquewhite;
+        }
+
+        #sticky {
+            position: sticky;
+            top: 0px;
+        }
+
+        #topbar1,
+        #topbar2 {
+            border: 1px solid red;
+            padding: 20px;
+        }
+
+        /* This is conditionally fixed
+        When the offset is reached, only then it starts acting like fixed */
+        #topbar2 {
+            position: sticky;
+            top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="topbar1">
+        Topbar 1
+    </div>
+
+    <div id="topbar2">
+        Topbar 2
+    </div>
+    <div class="container">
+        <div class="card" id="special">Card 1</div>
+        <div class="card" id="sticky">Card 2</div>
+        <div class="card">Card 3</div>
+    </div>
+
+    <div class="chatbot">
+        Chat
+    </div>
+</body>
+
+</html>

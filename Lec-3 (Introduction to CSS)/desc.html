@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Select ALL li elements which are descendents of div */
+        div li {
+            color: red;
+        }
+
+        div .special {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <ol>
+        <li>One</li>
+        <li>Two</li>
+        <li class="special">Three</li>
+    </ol>
+
+    <!-- Add styles to these li elements -->
+    <div>
+        <ol>
+            <li>One</li>
+            <li>Two</li>
+            <li class="special">Three</li>
+        </ol>
+    </div>
+
+    <div>
+        <ol>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+        </ol>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout</title>
+
+    <style>
+        /* Resetting the margin and padding for ALL items if added by browser */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Prompt", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            width: 100vw;
+            height: 100vh;
+            color: white;
+            background-color: #212121;
+            display: grid;
+            grid-template-areas:
+                'topbar topbar topbar topbar'
+                'nav content sidebar sidebar2'
+                'nav footer footer footer';
+            grid-template-columns: 1fr 3fr 1fr 1fr;
+            grid-template-rows: 80px 1fr 80px;
+        }
+
+        header {
+            grid-area: topbar;
+        }
+
+        main {
+            grid-area: content;
+        }
+
+        nav {
+            grid-area: nav;
+        }
+
+        aside {
+            grid-area: sidebar;
+        }
+
+        footer {
+            grid-area: footer;
+        }
+
+        #sidebar2 {
+            grid-area: sidebar2;
+        }
+
+        header,
+        main,
+        nav,
+        aside,
+        footer {
+            background-color: tomato;
+            color: white;
+            padding: 20px;
+            border: skyblue 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <header>Header</header>
+    <nav>Navigation</nav>
+    <main>Content</main>
+    <aside>Sidebar1</aside>
+    <aside id="sidebar2">Sidebar2</aside>
+    <footer>Footer</footer>
+</body>
+
+</html>

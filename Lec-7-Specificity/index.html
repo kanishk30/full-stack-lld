@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        ul>li#favorite[role="list-item-special"] {
+            color: aqua;
+        }
+
+        #favorite {
+            color: orange;
+        }
+
+
+        .fruits {
+            color: red;
+        }
+
+        li {
+            color: blue;
+        }
+
+        ul>li#favorite {
+            color: maroon;
+        }
+
+        div {
+            height: 100px;
+            width: 100px;
+            border: 1px solid red;
+        }
+
+        div::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: blueviolet;
+        }
+
+        div::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>Apple</li>
+        <li id="favorite" class="fruits">Strawberry</li>
+        <li role="list-item-special" id="favorite" class="fruits">Mango</li>
+        <li class="fruits">Orange</li>
+    </ul>
+
+    <div>
+        Element
+
+    </div>
+</body>
+
+</html>

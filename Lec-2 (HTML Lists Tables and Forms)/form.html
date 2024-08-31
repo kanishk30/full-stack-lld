@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <h1>User Subission Form</h1>
+
+        <label for="name">Name
+        </label>
+        <input name="name" id="name" type="text">
+
+        <label for="email">Email
+        </label>
+        <input name="email" id="email" type="email">
+
+
+        <label>Number
+            <input type="number">
+        </label>
+
+        <label>Age
+            <input min="1" max="110" type="number" />
+            <!-- <input maxlength="2" type="number" /> -->
+        </label>
+
+        <label>Date
+            <!-- Be aware of the format of the date that we're passing in min and max
+        YYYY-MM-DD -->
+            <input min="2024-08-02" max="2024-08-10" type="date" />
+            <!-- <input maxlength="2" type="number" /> -->
+        </label>
+
+        <label>Time
+            <input type="time" />
+            <!-- <input maxlength="2" type="number" /> -->
+        </label>
+
+        <p>Hobbies?</p>
+        <label>Reading
+            <input required name="hobbies" type="checkbox">
+        </label>
+        <label>Writing
+            <input name="hobbies" type="checkbox">
+        </label>
+        <label>Coding
+            <input name="hobbies" type="checkbox">
+        </label>
+
+        <p>Gender?</p>
+        <label>Male
+            <input name="gender" type="radio">
+        </label>
+        <label>Female
+            <input name="gender" type="radio">
+        </label>
+        <label>Others
+            <input required name="gender" type="radio">
+        </label>
+
+        <label>City
+            <select>
+                <option value="">Select An Option</option>
+                <option value="kolkata">Kolkata</option>
+                <option value="hyderabad">Hyderabad</option>
+                <option value="bengaluru">Bengaluru</option>
+            </select>
+        </label>
+
+        <label>Upload File
+            <input type="file">
+        </label>
+
+        <label>Submit button
+            <input type="submit">
+        </label>
+
+        <button type="submit">Submit this form</button>
+    </form>
+</body>
+
+</html>

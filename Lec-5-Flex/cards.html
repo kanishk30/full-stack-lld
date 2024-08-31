@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pragati+Narrow:wght@400;700&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: "Prompt", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            width: 100vw;
+            height: 100vh;
+            color: white;
+            background-color: #212121;
+        }
+
+        .container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            /* justify-content: space-around; */
+            /* gap: 30px; */
+            justify-content: space-around;
+            /* align-items: flex-end; */
+            flex-direction: row;
+            /* justify-content: space-between; */
+            /* flex-wrap: wrap; */
+            /* flex-direction: row; */
+        }
+
+        .card {
+            width: 180px;
+            height: 20px;
+            background: #5fc092;
+            box-shadow: 10px 10px 15px #16401a, -5px -5px 15px #2f452d;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        #special {
+            order: 1;
+            flex-grow: 100;
+            /* flex-shrink: 100; */
+        }
+
+        #special2 {
+            order: 2
+        }
+
+        #special3 {
+            order: 4
+        }
+
+        #special4 {
+            order: 3
+        }
+
+        /* This is an if condition which is saying
+        When screen is less than 600, apply these styles */
+        @media screen and (max-width: 600px) {
+            body {
+                background-color: beige;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+        }
+
+        /* This is an if condition which is saying
+        When screen is in between 600-700, apply these styles */
+        @media screen and (min-width: 600px) and (max-width: 700px) {
+            body {
+                background-color: red;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card" id="special">Card1</div>
+        <div class="card" id="special2">Card2</div>
+        <div class="card" id="special3">Card3</div>
+        <div class="card" id="special4">Card4</div>
+        <!-- <div class="card">Card1</div>
+        <div class="card">Card2</div>
+        <div class="card">Card3</div>
+        <div class="card">Card4</div> -->
+    </div>
+
+</body>
+
+</html>
