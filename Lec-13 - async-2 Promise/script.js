@@ -51,3 +51,42 @@ coinTossPromise
     })
 
 
+
+function logA() { console.log('A') }
+function logB() { console.log('B') }
+function logC() { console.log('C') }
+function logD() { console.log('D') }
+
+logA();
+
+setTimeout(logB, 0);
+
+Promise.resolve().then(logC);
+
+logD();
+
+/*
+  sync -- run first.
+  async --
+    -- microtask
+    -- macrotask
+*/
+// ADCB
+
+// what is the output of the console.log statement? 
+new Promise((resolve, reject) => resolve(1))
+    .then((result) => result * 2) // 2
+    .then((result) => result * 3) // 2*3
+    .then((result) => { // 6
+        console.log(result); // 6
+        return result / 2; // 6/2 = 3
+    });
+// answer = 6
+
+let promise1 = new Promise(function (resolve, reject) {
+    resolve("Success!");
+});
+promise1.then(function (value) {
+    console.log(value);
+});
+// answer = Success!
