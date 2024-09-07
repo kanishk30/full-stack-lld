@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>I am heading</h1>
+    </div>
+    <div>
+        <!-- On clicking of "Click1" button, show "Hello" on the screen.-->
+        <button id="btn1">Click1</button>
+
+        <!--  do nothing when clicked this.-->
+        <button id="btn2" class="btn2-cls">Click2</button>
+    </div>
+
+    <script>
+        // const btnElem = document.getElementById('btn1');
+        const btnElem = document.querySelector('#btn1')
+        console.log('button1:', btnElem);
+
+        const btnElem2 = document.querySelector('.btn2-cls')
+        console.log('button2:', btnElem2);
+
+        const btnElem3 = document.querySelector('button');
+        console.log(btnElem3); // selects the first one only (btn1)
+
+        const buttonsElem = document.querySelectorAll('button');
+        console.log('All buttons:', buttonsElem)
+
+        btnElem.addEventListener('click', function (event) {
+            // created a element
+            const newElem = document.createElement('h2');
+            newElem.innerText = 'Created after click from JS';
+
+            // appened this to DOM
+            const bodyElem = document.querySelector('body')
+            bodyElem.appendChild(newElem)
+
+        })
+
+
+    </script>
+</body>
+
+</html>
