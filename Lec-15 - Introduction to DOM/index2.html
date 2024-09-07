@@ -1,0 +1,87 @@
+<!-- 
+    Write a script to fetch data-color attribute value and apply the same class to the card.
+    This should happen when card is double clicked.
+    when card is double-clicked , change the data-color attribute to "used".
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            border: 1px solid #cac;
+            height: 100px;
+            width: 100px;
+            margin: 20px;
+            box-shadow: 0px 0px 6px 4px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="card" data-color="blue"></div>
+    <div class="card" data-color="red"></div>
+    <div class="card" data-color="blue"></div>
+    <div class="card" data-color="red"></div>
+    <div class="card" data-color="green"></div>
+    <div class="card" data-color="blue"></div>
+    <div class="card" data-color="red"></div>
+    <div class="card" data-color="green"></div>
+    <div class="card" data-color="green"></div>
+    <div class="card" data-color="red"></div>
+
+
+    <script>
+        /**
+         * fetch all data-color attributes of the card.
+         * double clcking on card, attaches data-color attribute to the class list.
+         * changes the data-color attribute to used.
+         * 
+         * APPROACH:
+         * - Selection - get list of cards
+         * - Adding event lsiteners
+         * - Logic1 : 
+         *          get the data-color attribute and 
+         *          add it to class list.
+         * - Logic2 :
+         *          change the attribute to "used".
+        */
+
+        const cardsNodeList = document.querySelectorAll('.card');
+        console.log("cardsNodeList", cardsNodeList)
+        for (let i = 0; i < cardsNodeList.length; i++) {
+            cardsNodeList[i].addEventListener('dblclick', function (ev) {
+
+                const cardObj = ev.target;
+                const classToBeAttached = cardObj.getAttribute('data-color');
+                // const existingClassName = cardObj.getAttribute('class');
+                // console.log('existingClassName ', existingClassName)
+                console.log('classToBeAttached ', classToBeAttached)
+                cardObj.classList.add(classToBeAttached)
+
+                cardObj.setAttribute('data-color', 'used')
+            })
+        }
+
+    </script>
+</body>
+
+
+
+</html>
