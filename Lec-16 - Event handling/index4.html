@@ -1,0 +1,47 @@
+<!-- 
+    on clicking btn, remove that button & add two new buttons in place.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF - 8" />
+    <meta http-equiv="X - UA - Compatible" content="IE = edge" />
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="doubleHolder" style="padding: 20px, background-color: red">
+        <button class="double">double</button>
+        <span>Hi</span>
+    </div>
+
+    <script>
+        //Q Create a button that is destroyed by clicking on it but two new buttons are created in it's place.
+
+        const doubleHolder = document.querySelector('#doubleHolder');
+        doubleHolder.addEventListener('click', function (ev) {
+            console.log("ev.target", ev.target); // where we clicked. buttn or span or div
+            console.log("ev.currentTarget", ev.currentTarget); // parent div
+
+            if (ev.target.classList.contains('double')) {
+                let btn = document.createElement('button');
+                btn.innerText = 'First button';
+
+                let btn2 = document.createElement('button');
+                btn2.innerText = 'Second button';
+
+                ev.currentTarget.appendChild(btn);
+                ev.currentTarget.appendChild(btn2);
+
+                ev.target.remove()
+
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>
