@@ -137,7 +137,8 @@ async function getData(target) {
         updateDOM(locationName, localTime, temp, conditionName, conditionEmoji)
 
     } catch (error) {
-        console.error("ERROR", error.message);
+        console.error("ERROR ::: ", error.message);
+        alert('Kindly enter valid city name')
     }
 }
 
