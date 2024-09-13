@@ -76,3 +76,78 @@ body {
     background-color: green;
     transition: all .3s ease-in;
 }
+
+.main-cont {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem;
+}
+
+.ticket-cont {
+    height: 12rem;
+    width: 14rem;
+    background-color: orange;
+}
+
+.ticket-color {
+    height: 1rem;
+    /* via JS.... */
+    background-color: lightpink;
+}
+
+.ticket-id {
+    background-color: yellow;
+    height: 2rem;
+}
+
+.ticket-lock {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 110px;
+    margin-right: 8px;
+    font-size: 1.5rem;
+
+}
+
+
+.modal-cont {
+    height: 50vh;
+    width: 50vw;
+    position: absolute;
+    background-color: lightgrey;
+    top: 30%;
+    left: 25%;
+    display: flex;
+}
+
+.textArea-cont {
+    height: 100%;
+    width: 70%;
+    resize: none;
+    border: none;
+    outline: none;
+    background-color: rgb(155, 150, 150, 0.6);
+    color: #000;
+    font-size: 20px;
+}
+
+.priority-colors-container {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: #4b4b4b;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.priority-color {
+    height: 2rem;
+    width: 4rem;
+}
+
+.active {
+    border: solid 4px goldenrod
+}
