@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.toolbox-cont {
+    height: 5rem;
+    /* 80px */
+    background-color: #4b4b4b;
+    display: flex;
+    align-items: center;
+}
+
+/* > * for all direct children of toolbox-cont */
+.toolbox-cont>* {
+    margin-left: 3rem;
+}
+
+.toolbox-priority-cont {
+    width: 20rem;
+    background-color: #3d3d3d;
+    height: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.color {
+    height: 1.5rem;
+    width: 3rem;
+}
+
+.color:hover {
+    background-color: grey;
+}
+
+.lightpink {
+    background-color: lightpink;
+}
+
+.lightgreen {
+    background-color: lightgreen;
+}
+
+.lightblue {
+    background-color: lightblue;
+}
+
+.black {
+    background-color: black;
+}
+
+.action-btn-cont {
+    height: 3rem;
+    width: 8rem;
+    background-color: #3d3d3d;
+    display: flex;
+}
+
+.action-btn-cont>* {
+    width: 50%;
+    font-size: 1.75rem;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-btn:hover,
+.remove-btn:hover {
+    background-color: green;
+    transition: all .3s ease-in;
+}
