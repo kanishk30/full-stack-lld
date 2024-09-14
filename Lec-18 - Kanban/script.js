@@ -27,16 +27,16 @@ addBtn.addEventListener('click', function () {
 
 // create a ticket dynamically.
 
-function createTicket() {
+function createTicket(ticketColor, ticketTask) {
     //create a new ticket HTML (container element)
     const ticketCont = document.createElement('div');
     ticketCont.classList.add('ticket-cont');
     // OR
     // ticketCont.setAttribute('class', 'ticket-cont')
     ticketCont.innerHTML = `
-        <div class="ticket-color"></div>
+        <div class="ticket-color" style="background-color: ${ticketColor}"></div>
         <div class="ticket-id">123</div>
-        <div class="ticket-area">Study today.</div>
+        <div class="ticket-area">${ticketTask}</div>
         <div class="ticket-lock">
             <i class="fa-solid fa-lock"></i>
             <!-- <i class="fa-solid fa-lock-open"></i> -->
@@ -46,13 +46,50 @@ function createTicket() {
     mainCont.appendChild(ticketCont);
 }
 
+let modalPriorityColor = 'black';
+
 modalCont.addEventListener('keydown', function (ev) {
     if (ev.key === 'Shift') {
-        createTicket()
+        const ticketTaskValue = textAreaCont.value;
+        createTicket(modalPriorityColor, ticketTaskValue)// pass my color.\, ticket descr.
         modalCont.style.display = 'none'; // hide the modal.
         textAreaCont.value = ''; // clear contents on close.
     };
+})
 
+
+// selecting priority colors
+const allPriorityColors = document.querySelectorAll('.priority-color');
+
+allPriorityColors.forEach(function (colorElem) {
+    colorElem.addEventListener('click', function () {
+        // on each color , remove active class.
+
+        // allPriorityColors.forEach(function (priorityColorElem) {
+        //     priorityColorElem.classList.remove('active')
+        // })
+
+        // SAME AS ABOVE.
+        for (let i = 0; i < allPriorityColors.length; i++) {
+            allPriorityColors[i].classList.remove('active')
+        }
+
+
+        // on clicked element, add the class
+        colorElem.classList.add('active');
+
+        // modalPriorityColor = colorElem.classList[0];
+        // OR 
+        modalPriorityColor = colorElem.getAttribute('data-color');
+        // console.log(modalPriorityColor)
+
+
+        // Implement additional logoc to apply this actove color,
+        // to the task as well.
+
+    })
 
 })
+// pass selected color to te ticket.
+
 
