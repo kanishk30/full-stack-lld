@@ -119,7 +119,7 @@ body {
     background-color: lightgrey;
     top: 30%;
     left: 25%;
-    display: flex;
+    display: none;
 }
 
 .textArea-cont {
