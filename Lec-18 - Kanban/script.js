@@ -198,6 +198,35 @@ function handleColor(ticketElem) {
     })
 }
 
+const toolBoxColors = document.querySelectorAll('.color');
+
+toolBoxColors.forEach(function (colorElem) {
+    colorElem.addEventListener('click', function () {
+        const selectedColor = colorElem.classList[0];
+        const allTickets = document.querySelectorAll('.ticket-cont');
+
+        allTickets.forEach(function (ticketElem) {
+            const ticketColorBand = ticketElem.querySelector('.ticket-color');
+            const currentColor = ticketColorBand.style.backgroundColor;
+
+            if (currentColor === selectedColor) {
+                ticketElem.style.display = 'block'
+            } else {
+                ticketElem.style.display = 'none'
+            }
+        })
+
+    })
+
+    colorElem.addEventListener('dblclick', function () {
+        const allTickets = document.querySelectorAll('.ticket-cont');
+        allTickets.forEach(function (ticketElem) {
+            ticketElem.style.display = 'block'
+        })
+
+    })
+})
+
 
 
 
