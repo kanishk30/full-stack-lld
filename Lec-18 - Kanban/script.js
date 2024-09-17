@@ -80,7 +80,8 @@ function createTicket(ticketColor, ticketTask, ticketID) {
     `;
     const mainCont = document.querySelector('.main-cont');
     mainCont.appendChild(ticketCont);
-    handleLock(ticketCont)
+    handleLock(ticketCont);
+    handleColor(ticketCont)
 
 }
 
@@ -172,7 +173,30 @@ function handleLock(ticketElem) {
 
 }
 
+const colors = ['lightpink', 'lightgreen', 'lightblue', 'black'];
 
+function handleColor(ticketElem) {
+    const ticketColorBand = ticketElem.querySelector('.ticket-color');
+    ticketColorBand.addEventListener('click', function () {
+        // get the current color of ticket.
+        const currentColor = ticketColorBand.style.backgroundColor;
+
+        // get index of that in your Colors array.
+        // findIndex method.
+        const currentColorIndex = colors.findIndex(function (color) {
+            return color === currentColor
+        })
+
+        console.log(colors, currentColor, currentColorIndex)
+
+        // increment index & using modulus operator to avoid OVERFLOW.
+        const newColorIndex = (currentColorIndex + 1) % colors.length;
+        const newTicketColor = colors[newColorIndex];
+
+        ticketColorBand.style.backgroundColor = newTicketColor;
+
+    })
+}
 
 
 
