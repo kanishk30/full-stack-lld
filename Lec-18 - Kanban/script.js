@@ -10,6 +10,9 @@ let addTaskFlag = false; // on page load initally, popup should not be visible.
 
 let removeTaskFlag = false;
 
+const ticketArr = JSON.parse(localStorage.getItem('tickets')) || [];
+
+
 addBtn.addEventListener('click', function () {
     // addTaskFlag = !addTaskFlag; // toggle variable value.
     if (addTaskFlag === true) {
@@ -62,7 +65,7 @@ function handleTicketRemoval(ticketElem) {
 
 
 // create a ticket dynamically.
-
+// update my HTML wth this function.
 function createTicket(ticketColor, ticketTask, ticketID) {
     //create a new ticket HTML (container element)
     const ticketCont = document.createElement('div');
@@ -81,7 +84,15 @@ function createTicket(ticketColor, ticketTask, ticketID) {
     const mainCont = document.querySelector('.main-cont');
     mainCont.appendChild(ticketCont);
     handleLock(ticketCont);
-    handleColor(ticketCont)
+    handleColor(ticketCont);
+
+    // ticketArr.push({
+    //     ticketID: ticketID,
+    //     ticketColor: ticketColor,
+    //     taskContent: ticketTask
+    // });
+
+    // localStorage.setItem('tickets', JSON.stringify(ticketArr))
 
 }
 
@@ -101,7 +112,13 @@ modalCont.addEventListener('keydown', function (ev) {
         modalCont.style.display = 'none'; // hide the modal.
         textAreaCont.value = ''; // clear contents on close.
 
-        // Generating random ID.
+        ticketArr.push({
+            ticketID: ticketID,
+            ticketColor: modalPriorityColor,
+            taskContent: ticketTaskValue
+        });
+
+        updateLocalStorage();
 
 
     };
@@ -149,10 +166,15 @@ const lockOpenClass = 'fa-lock-open';
 
 function handleLock(ticketElem) {
     const ticketLockElem = ticketElem.querySelector('.ticket-lock');
-    const ticketTaskArea = ticketElem.querySelector('.ticket-area')
+    const ticketTaskArea = ticketElem.querySelector('.ticket-area');
+
+    const id = ticketElem.querySelector('.ticket-id').innerText;
 
     ticketLockElem.addEventListener('click', function () {
         console.log('lock icon clicked');
+
+        const ticketIdx = getTicketIdx(id);
+        console.log('ticketIdx', ticketIdx)
 
         if (ticketLockElem.children[0].classList.contains(lockCloseClass)) {
             // 1. remove lock close class.
@@ -169,6 +191,9 @@ function handleLock(ticketElem) {
             ticketLockElem.children[0].classList.add(lockCloseClass);
             ticketTaskArea.setAttribute('contenteditable', "false");
         }
+
+        ticketArr[ticketIdx].taskContent = ticketTaskArea.innerText;
+        updateLocalStorage();
     })
 
 }
@@ -177,10 +202,13 @@ const colors = ['lightpink', 'lightgreen', 'lightblue', 'black'];
 
 function handleColor(ticketElem) {
     const ticketColorBand = ticketElem.querySelector('.ticket-color');
+    const id = ticketElem.querySelector('.ticket-id').innerText;
+
     ticketColorBand.addEventListener('click', function () {
         // get the current color of ticket.
         const currentColor = ticketColorBand.style.backgroundColor;
 
+        const ticketIdx = getTicketIdx(id);
         // get index of that in your Colors array.
         // findIndex method.
         const currentColorIndex = colors.findIndex(function (color) {
@@ -194,6 +222,9 @@ function handleColor(ticketElem) {
         const newTicketColor = colors[newColorIndex];
 
         ticketColorBand.style.backgroundColor = newTicketColor;
+
+        ticketArr[ticketIdx].ticketColor = newTicketColor;
+        updateLocalStorage();
 
     })
 }
@@ -226,6 +257,37 @@ toolBoxColors.forEach(function (colorElem) {
 
     })
 })
+
+
+function updateLocalStorage() {
+    // simply to update LS.
+    localStorage.setItem('tickets', JSON.stringify(ticketArr))
+}
+
+
+function initialise() {
+    // first step is to retrieve all tickets stored in LS.
+    if (localStorage.getItem('tickets')) {
+        for (let i = 0; i < ticketArr.length; i++) {
+            createTicket(ticketArr[i].ticketColor, ticketArr[i].taskContent, ticketArr[i].ticketID)
+        }
+    }
+
+}
+
+initialise();
+
+function getTicketIdx(id) {
+    // find the ticket obj index from my LS.
+    // that is the ticket that needs to be updated.
+
+    let ticketIdx = ticketArr.findIndex(function (ticketObj) {
+        return ticketObj.ticketID === id;
+    })
+
+    return ticketIdx;
+}
+
 
 
 
