@@ -52,10 +52,17 @@ removeBtn.addEventListener('click', function () {
 
 
 function handleTicketRemoval(ticketElem) {
+    const id = ticketElem.querySelector('.ticket-id').innerText;
+
     console.log(ticketElem)
     ticketElem.addEventListener('click', function () {
         if (removeTaskFlag === true) {
             ticketElem.remove();
+            const ticketIdx = getTicketIdx(id);
+            // array.splice - delete/adding at a particlaur Index.
+            ticketArr.splice(ticketIdx, 1);
+            updateLocalStorage();
+
         } else {
             console.log('in else statement')
         }
