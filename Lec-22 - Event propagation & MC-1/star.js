@@ -3,14 +3,16 @@
 const stars = document.querySelectorAll('.star');
 const ratingDisplay = document.querySelector('#rating');
 
-stars.forEach(function (star) {
-    star.addEventListener('click', function () {
-        console.log(star)
-        const value = star.getAttribute('data-value')
-        updateRating(value)
+const parentStar = document.querySelector('#stars')
 
-    })
-})
+// stars.forEach(function (star) {
+//     star.addEventListener('click', function () {
+//         console.log(star)
+//         const value = star.getAttribute('data-value')
+//         updateRating(value)
+
+//     })
+// })
 
 function updateRating(value) {
     // change display of rating ( eg. 2/5)
@@ -32,3 +34,11 @@ function updateRating(value) {
     })
 
 }
+
+// using event bubbling...
+parentStar.addEventListener('click', function (ev) {
+    const target = ev.target;
+    console.log(target);
+    const value = target.getAttribute('data-value')
+    updateRating(value)
+})
