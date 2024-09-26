@@ -21,13 +21,30 @@ const child = document.querySelector('#child');
 
 // EVENT CAPTURING STARTS...
 
-grandparent.addEventListener('click', function () {
+grandparent.addEventListener('click', function (ev) {
     console.log('grandparent clicked (capturing)')
 }, true)
 
-parent.addEventListener('click', function () {
+parent.addEventListener('click', function (ev) {
+    ev.stopPropagation();
     console.log('parent clicked (capturing)')
 }, true)
 child.addEventListener('click', function () {
     console.log('child clicked (capturing)')
 }, true)
+
+
+
+grandparent.addEventListener('click', function () {
+    console.log('grandparent clicked ')
+})
+
+parent.addEventListener('click', function (ev) {
+    console.log('parent clicked ');
+    ev.stopPropagation();
+
+})
+child.addEventListener('click', function (ev) {
+    console.log('child clicked ');
+
+})
