@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .filled {
+            color: yellow
+        }
+    </style>
+</head>
+
+<body>
+    <div class="rating">
+        <span id="stars">
+            <span class="star" scaler="1" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </span>
+    </div>
+
+    <!-- display current rating  -->
+    <p>Current rating: <span id="rating">0</span> / 5</p>
+
+    <script src="star.js"></script>
+</body>
+
+</html>
