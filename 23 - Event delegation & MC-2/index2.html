@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color-box {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="colorPalette">
+        <div class="color-box" style="background-color: rgb(255,0,0)"></div>
+        <span>gibberish text...</span>
+        <div class="color-box" style="background-color: rgb(0,255,0)"></div>
+        <span>gibberish text...</span>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+        <div class="color-box" style="background-color: rgb(0,0,255)"></div>
+    </div>
+
+    <script>
+        const colorPalette = document.getElementById('colorPalette');
+        colorPalette.addEventListener('click', function (event) {
+            const clickedElem = event.target;
+            if (clickedElem.classList.contains('color-box')) {
+                // get the current color of the div.
+                let color = clickedElem.style.backgroundColor;
+                console.log(clickedElem, color);
+                clickedElem.parentElement.style.backgroundColor = color;
+            }
+        })
+    </script>
+
+</body>
+
+</html>
