@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 3000px;
+            /* background-color: cyan; */
+        }
+
+        .status {
+            position: fixed;
+            top: 0;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="status">
+        Scroll position : <span id="scrollPosition">0</span>
+    </div>
+    <script>
+        // every specific time interval(limit) - we call the func() function. 
+        // no matter how many time funct() gets called in between, you ignore it.
+        function throttle(func, limit) {
+            let isThrottlingModeOn = false; // flag to maintain whether function is running already OR in throttle time limit zone.
+
+            return function () {
+                console.log('outside')
+                console.log("isThrottlingModeOn:", isThrottlingModeOn)
+                if (!isThrottlingModeOn) {
+                    console.log('insode to call func')
+                    func();
+                    isThrottlingModeOn = true; // so that if triggered agin, you dont gt inside if statement.
+                    setTimeout(function () {
+                        isThrottlingModeOn = false;
+                    }, limit)
+                }
+            }
+        }
+
+        function updateScrollPosition() {
+            const scrollPosition = document.getElementById('scrollPosition');
+            const currentYPosition = window.scrollY;
+            scrollPosition.textContent = currentYPosition;
+            console.log('scrolled ', 'current Y Position', currentYPosition)
+        }
+
+        window.addEventListener('scroll', throttle(updateScrollPosition, 300))
+    </script>
+</body>
+
+</html>
