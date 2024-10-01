@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="input_field" type="text" />
+
+    <script>
+        // polyfill = custom implementation...
+
+        function debounce(func, waitTime) {
+            // debounce will eventually call the "func" only, 
+            // only after "waitTime" have elapsed since last time function was invoked.
+            let timeout; // hold the reference of time that have elapsed ( returned by settimeout ).
+
+            // on every leystroke, we are just returned executedFunc().
+            return function executedFunction() {
+                // later() will only be called after expiry of timeout...
+                console.log("executedFunction")
+                const later = function () {
+                    console.log('later functon called', "timeout : ", timeout)
+                    clearTimeout(timeout);
+                    console.log('timer cleared', timeout)
+                    func(); //original function
+                }
+
+                clearTimeout(timeout); // reset the timer to original...
+                timeout = setTimeout(later, waitTime);
+            }
+        }
+
+
+        let inputField = document.querySelector('#input_field');
+
+        function processInput() {
+            console.log('Input processing...')
+        }
+
+        const debouncedProcessedInput = debounce(processInput, 300);
+
+        inputField.addEventListener('keydown', debouncedProcessedInput)
+
+    </script>
+</body>
+
+</html>
