@@ -29,15 +29,21 @@ const className = new MyClass()
 
 class Pizza {
     static totalPizzasMade = 0;
+
+    #toppings; // private property.
+    #size; // private property.
+    #crustType; // private property.
+
+
     constructor(toppings, size, crustType) {
-        this.toppings = toppings;
-        this.size = size;
-        this.crustType = crustType;
+        this.#toppings = toppings;
+        this.#size = size;
+        this.#crustType = crustType;
         Pizza.totalPizzasMade++; // increment the count each time a new pizza is made.
     }
 
     describe() {
-        console.log(`I had ${this.size} ${this.crustType} pizza with ${this.toppings.join(', ')}.`)
+        console.log(`I had ${this.#size} ${this.#crustType} pizza with ${this.#toppings.join(', ')}.`)
     }
 
     static calculatePizzasMade() {
@@ -53,13 +59,15 @@ const vinaysOrder = new Pizza(['Cheese', 'Veggies'], 'Large', 'thick');
 
 
 class StuffedCrustPizza extends Pizza {
+    #stuffingType; // private property
+
     constructor(toppings, size, crustType, stuffingType) {
         super(toppings, size, crustType); // Call the parent constrcutor with super.
-        this.stuffingType = stuffingType;
+        this.#stuffingType = stuffingType;
     }
 
     describeStuffing() {
-        console.log(`This pizza has ${this.stuffingType} stuffing in it.`)
+        console.log(`This pizza has ${this.#stuffingType} stuffing in it.`)
     }
 
     describe() {
@@ -71,6 +79,9 @@ const specialOrder = new StuffedCrustPizza(['Cheese', 'Mushrooms'], 'medium', 'w
 
 specialOrder.describe();
 specialOrder.describeStuffing();
+
+console.log(specialOrder.toppings); // undefined , as toppings is private.
+// console.log(specialOrder.#toppings); // SyntaxError: Private field '#toppings' must be declared in an enclosing class
 
 Pizza.calculatePizzasMade() // 3
 
