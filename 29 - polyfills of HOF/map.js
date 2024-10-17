@@ -16,6 +16,7 @@ const res2 = arr.map(function (el, index, origArr) {
 //     Array.prototype.map = function()
 // }
 
+// thisArg — An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 Array.prototype.myMap = function (callbackfn, thisArg) {
     if (typeof callbackfn !== 'function') {
         throw new TypeError(callbackfn + ' should be a function.')
@@ -25,6 +26,7 @@ Array.prototype.myMap = function (callbackfn, thisArg) {
     const arr = new Array(this.length); // make a new array of length of "this" original array.
 
     for (let i = 0; i < arr.length; i++) {
+        // handle sparse array.
         if (i in this) {
             var context = thisArg ? thisArg : this;
             const mappedValue = callbackfn.call(context, this[i], i, this);
