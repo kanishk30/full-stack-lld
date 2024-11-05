@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // Functional component using JSX.
+        const rootElem = document.getElementById('root');
+
+        // functional component..
+        // functional component -- simply a JS function that 
+        // returns React elements.
+        function App() {
+            return <div>
+                <p>HI </p>
+                <h1>
+                    <span>Hello from JSX</span>
+                </h1>
+            </div>
+            // internally babel converted code to this ->>
+            // React.createElement('h1', null, 'Hello from JSX')
+        }
+
+        ReactDOM.render(<App />, rootElem)
+
+    </script>
+</body>
+
+</html>
