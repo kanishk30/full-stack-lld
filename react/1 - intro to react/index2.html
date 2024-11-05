@@ -20,9 +20,12 @@
     const headingElement = React.createElement(
         'div',
         {
-            style: { color: 'blue' }
+            style: { color: 'blue' },
+            className: 'greeting'
         },
-        'Hello from react!!'
+        'Hello from react!!',
+        React.createElement('h1', { style: { color: 'red' } }, 'NESTED REACT'),
+        React.createElement('h3', null, 'Welcome'),
     );
 
     // render the element to the DOM using ReactDOM.
