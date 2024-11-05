@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+<script>
+    const rootElement = document.getElementById('root');
+    const headingElement = React.createElement(
+        'div',
+        {
+            style: { color: 'blue' }
+        },
+        'Hello from react!!'
+    );
+
+    // render the element to the DOM using ReactDOM.
+    // .render() method takes two parameters.
+    // 1. the react element that you want to render.
+    // 2. DOM element where the React element should be mounted.
+
+    ReactDOM.render(headingElement, rootElement)
+</script>
+
+
+</html>
