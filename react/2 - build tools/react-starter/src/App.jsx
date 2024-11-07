@@ -5,7 +5,7 @@ import './App.css'
 import Scaler from './MyComponent'
 import { a, b, c } from './MyComponent'
 import DisplayData from './DisplayData'
-
+import ConditionRendering from './ConditionalRendering'
 
 function App() {
 
@@ -14,18 +14,16 @@ function App() {
     name: 'Alice',
     age: 30
   }
-
+  const loggedIn = true;
   return (
     <>
-      <DisplayData fruitsArr={fruits} personObj={person} />
+      <ConditionRendering person={person} isLoggedin={loggedIn} />
+      {/* <DisplayData fruitsArr={fruits} personObj={person} /> */}
       {/* <Scaler message='Component 1' name='Scaler' />
       a: {a}
       b: {b}
       <Scaler message='Component 2' />
-      {c}
-      <Scaler message='Component 3' />
-      <Scaler message='Component 4' />
-      <Scaler message='Component 5' /> */}
+      {c} */}
     </>
   )
 }
