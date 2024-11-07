@@ -6,7 +6,7 @@ import Scaler from './MyComponent'
 import { a, b, c } from './MyComponent'
 import DisplayData from './DisplayData'
 import ConditionRendering from './ConditionalRendering'
-
+import Button from './Button'
 function App() {
 
   const fruits = ['Apple', 'Banana', 'Mango', 'Guava', 'Cherry', "melon"];
@@ -17,7 +17,8 @@ function App() {
   const loggedIn = true;
   return (
     <>
-      <ConditionRendering person={person} isLoggedin={loggedIn} />
+      <Button />
+      {/* <ConditionRendering person={person} isLoggedin={loggedIn} /> */}
       {/* <DisplayData fruitsArr={fruits} personObj={person} /> */}
       {/* <Scaler message='Component 1' name='Scaler' />
       a: {a}
