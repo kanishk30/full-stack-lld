@@ -1,3 +1,4 @@
+import { useState } from 'react'
 
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -10,19 +11,38 @@ import Button from './Button'
 import State from './State'
 import Form from './Form'
 import FormAdvanced from './FormAdvanced'
-
+import TemperatureDisplay from './TemperatureDisplay'
+import TemperatureInput from './TemperatureInput'
 
 function App() {
 
-  const fruits = ['Apple', 'Banana', 'Mango', 'Guava', 'Cherry', "melon"];
-  const person = {
-    name: 'Alice',
-    age: 30
+  const [temp, setTemp] = useState();
+
+  const handleTemparatureChange = (newTemp) => {
+    console.log("newTemp:", newTemp)
+    setTemp(newTemp);
   }
-  const loggedIn = true;
+
+  return (
+    <div>
+      <TemperatureInput
+        temperature={temp}
+        onChange={handleTemparatureChange}
+      />
+      <TemperatureDisplay temperature={temp} />
+    </div>
+  )
+
+
+  // const fruits = ['Apple', 'Banana', 'Mango', 'Guava', 'Cherry', "melon"];
+  // const person = {
+  //   name: 'Alice',
+  //   age: 30
+  // }
+  // const loggedIn = true;
   return (
     <>
-      <FormAdvanced />
+      {/* <FormAdvanced /> */}
       {/* <Form /> */}
       {/* <State /> */}
       {/* <Button /> */}
