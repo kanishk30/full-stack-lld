@@ -9,6 +9,7 @@ import ConditionRendering from './ConditionalRendering'
 import Button from './Button'
 import State from './State'
 import Form from './Form'
+import FormAdvanced from './FormAdvanced'
 
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
   const loggedIn = true;
   return (
     <>
-      <Form />
+      <FormAdvanced />
+      {/* <Form /> */}
       {/* <State /> */}
       {/* <Button /> */}
       {/* <ConditionRendering person={person} isLoggedin={loggedIn} /> */}
