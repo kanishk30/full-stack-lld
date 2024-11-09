@@ -8,6 +8,7 @@ import DisplayData from './DisplayData'
 import ConditionRendering from './ConditionalRendering'
 import Button from './Button'
 import State from './State'
+import Form from './Form'
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
   const loggedIn = true;
   return (
     <>
-      <State />
+      <Form />
+      {/* <State /> */}
       {/* <Button /> */}
       {/* <ConditionRendering person={person} isLoggedin={loggedIn} /> */}
       {/* <DisplayData fruitsArr={fruits} personObj={person} /> */}
