@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -7,6 +7,9 @@ import { a, b, c } from './MyComponent'
 import DisplayData from './DisplayData'
 import ConditionRendering from './ConditionalRendering'
 import Button from './Button'
+import State from './State'
+
+
 function App() {
 
   const fruits = ['Apple', 'Banana', 'Mango', 'Guava', 'Cherry', "melon"];
@@ -17,7 +20,8 @@ function App() {
   const loggedIn = true;
   return (
     <>
-      <Button />
+      <State />
+      {/* <Button /> */}
       {/* <ConditionRendering person={person} isLoggedin={loggedIn} /> */}
       {/* <DisplayData fruitsArr={fruits} personObj={person} /> */}
       {/* <Scaler message='Component 1' name='Scaler' />
