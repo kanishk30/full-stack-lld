@@ -23,15 +23,15 @@ function App() {
     setTemp(newTemp);
   }
 
-  return (
-    <div>
-      <TemperatureInput
-        temperature={temp}
-        onChange={handleTemparatureChange}
-      />
-      <TemperatureDisplay temperature={temp} />
-    </div>
-  )
+  // return (
+  //   <div>
+  //     <TemperatureInput
+  //       temperature={temp}
+  //       onChange={handleTemparatureChange}
+  //     />
+  //     <TemperatureDisplay temperature={temp} />
+  //   </div>
+  // )
 
 
   // const fruits = ['Apple', 'Banana', 'Mango', 'Guava', 'Cherry', "melon"];
@@ -44,7 +44,7 @@ function App() {
     <>
       {/* <FormAdvanced /> */}
       {/* <Form /> */}
-      {/* <State /> */}
+      <State />
       {/* <Button /> */}
       {/* <ConditionRendering person={person} isLoggedin={loggedIn} /> */}
       {/* <DisplayData fruitsArr={fruits} personObj={person} /> */}
