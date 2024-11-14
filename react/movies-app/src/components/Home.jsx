@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import Movies from "./Movies";
 
 function Home() {
     return (
@@ -7,6 +8,7 @@ function Home() {
             <div>
                 Home..
             </div>
+            <Movies />
 
         </>
     )
