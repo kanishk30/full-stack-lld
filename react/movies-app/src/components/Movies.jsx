@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Pagination from "./Pagination";
+import MovieCard from "./MovieCard";
 
 const MOVIES_ARR = [
     {
@@ -62,21 +63,7 @@ function Movies() {
                 <h2>Trending movies</h2>
             </div>
             <div className="flex justify-evenly flex-wrap gap-8">
-                {movies.map((movieObj, i) => {
-                    return (
-                        <div
-                            className="h-[40vh] w-[200px] bg-cover bg-center 
-                            flex flex-col  rounded-2xl"
-                            style={{
-                                backgroundImage: `url(https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68)`
-                            }}
-                        >
-                            <div className="text-white text-2xl rounded-2xl bg-gray-700/50  text-center w-full p-2">
-                                {movieObj.title}
-                            </div>
-                        </div>
-                    )
-                })}
+                {movies.map((movieObj) => <MovieCard movieObj={movieObj} />)}
             </div>
 
             <Pagination
