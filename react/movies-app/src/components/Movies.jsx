@@ -63,6 +63,15 @@ function Movies() {
             .catch(e => console.log(e))
     }, [pageNo])
 
+    // read from LS for watchlist...
+
+    useEffect(() => {
+        const moviesFromLocalStorage = localStorage.getItem('movies');
+        if (moviesFromLocalStorage) {
+            setWatchList(JSON.parse(moviesFromLocalStorage));
+        }
+    }, [])
+
 
     const handleNext = () => {
         // this will be called on next btn click.
@@ -78,12 +87,14 @@ function Movies() {
     const addToWatchList = (movieObj) => {
         const updatedWatchList = [...watchList, movieObj];
         setWatchList(updatedWatchList);
+        localStorage.setItem("movies", JSON.stringify(updatedWatchList))
     }
 
     const removeFromWatchList = (movieObj) => {
         // remove a given element from array.
         const filteredMovies = watchList.filter((movie) => movie.id !== movieObj.id);
         setWatchList(filteredMovies);
+        localStorage.setItem("movies", JSON.stringify(filteredMovies))
     }
 
     return (
