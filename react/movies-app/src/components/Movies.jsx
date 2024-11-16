@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Pagination from "./Pagination";
 import MovieCard from "./MovieCard";
+import axios from 'axios';
 
 const MOVIES_ARR = [
     {
@@ -43,8 +44,24 @@ const MOVIES_ARR = [
 
 function Movies() {
 
-    const [movies, setMovies] = useState(MOVIES_ARR);
+    const [movies, setMovies] = useState([]);
     const [pageNo, setPageNo] = useState(1);
+
+
+    useEffect(() => {
+        axios.get('https://api.themoviedb.org/3/trending/movie/day', {
+            params: {
+                api_key: 'e278e3c498ab14e0469bf6d86da17045',
+                language: 'en-US',
+                page: pageNo
+            }
+        }).then((response) => {
+            console.log(response.data.results)
+            setMovies(response.data.results)
+        })
+            .catch(e => console.log(e))
+    }, [pageNo])
+
 
     const handleNext = () => {
         // this will be called on next btn click.
