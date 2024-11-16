@@ -46,6 +46,7 @@ function Movies() {
 
     const [movies, setMovies] = useState([]);
     const [pageNo, setPageNo] = useState(1);
+    const [watchList, setWatchList] = useState([]);
 
 
     useEffect(() => {
@@ -74,13 +75,29 @@ function Movies() {
         }
     }
 
+    const addToWatchList = (movieObj) => {
+        const updatedWatchList = [...watchList, movieObj];
+        setWatchList(updatedWatchList);
+    }
+
+    const removeFromWatchList = (movieObj) => {
+        // remove a given element from array.
+        const filteredMovies = watchList.filter((movie) => movie.id !== movieObj.id);
+        setWatchList(filteredMovies);
+    }
+
     return (
         <div>
             <div className="text-2xl font-bold text-center">
                 <h2>Trending movies</h2>
             </div>
             <div className="flex justify-evenly flex-wrap gap-8">
-                {movies.map((movieObj) => <MovieCard movieObj={movieObj} />)}
+                {movies.map((movieObj) => <MovieCard
+                    movieObj={movieObj}
+                    addToWatchList={addToWatchList}
+                    watchList={watchList}
+                    removeFromWatchList={removeFromWatchList}
+                />)}
             </div>
 
             <Pagination
