@@ -4,6 +4,8 @@ import { GENRE_IDS_MAP } from '../constants';
 function WatchList() {
     const [watchListArr, setWatchListArr] = useState([]);
     const [search, setSearch] = useState('')
+    const [genreList, setGenreList] = useState(['All Genres', 'Action', 'Sci-Fi', 'Thriller']);
+    const [currentGenre, setCurrentGenre] = useState('All Genres')
 
     useEffect(() => {
         const moviesFromLS = localStorage.getItem('movies');
@@ -11,6 +13,15 @@ function WatchList() {
 
         setWatchListArr(JSON.parse(moviesFromLS))
     }, [])
+
+    // setting genre filters...
+    useEffect(() => {
+        let gNamesArr = watchListArr.map(movie => {
+            return getGenreFromId(movie.genre_ids[0])
+        });
+        let uniqueGenres = new Set(gNamesArr);
+        setGenreList(['All Genres', ...uniqueGenres])
+    }, [watchListArr])
 
     const getGenreFromId = id => {
         return GENRE_IDS_MAP[id];
@@ -35,9 +46,22 @@ function WatchList() {
         // setSearch(ev.target.value)
     }
 
+    const handleGenreFilter = genre => {
+        setCurrentGenre(genre)
+    }
 
     return (
         <>
+            {/* genre filters */}
+            <div className="flex justify-center m-4">
+                {genreList.map((genre) => {
+                    const isActive = currentGenre === genre;
+                    const baseStyles = "flex justify-center items-center h-[3rem] w-[10rem] font-bold mx-4 text-white cursor-pointer";
+                    const bgColor = isActive ? 'bg-blue-400' : 'bg-gray-600';
+                    return <div onClick={() => handleGenreFilter(genre)} className={`${baseStyles} ${bgColor}`}>{genre}</div>
+                })}
+            </div>
+            {/* input... */}
             <div className="flex justify-center">
                 <input
                     type="text"
@@ -78,6 +102,13 @@ function WatchList() {
                     </thead>
                     <tbody className="divide-y divide-x-gray-100 border-t border-gray-100">
                         {watchListArr
+                            .filter((movie) => {
+                                if (currentGenre === 'All Genres') {
+                                    return true
+                                } else {
+                                    return currentGenre === getGenreFromId(movie.genre_ids[0])
+                                }
+                            })
                             .filter((movie) => movie.title.toLowerCase().includes(search.toLowerCase()))
                             .map((movie) => <tr>
                                 <td key={movie.id} className="flex items-center px-6 py-4 gap-4">
