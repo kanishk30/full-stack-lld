@@ -1,27 +1,30 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { GENRE_IDS_MAP } from '../constants';
+import { WatchListContext } from "../MovieContext";
 
 function WatchList() {
-    const [watchListArr, setWatchListArr] = useState([]);
+    // const [watchList, setWatchList] = useState([]);
     const [search, setSearch] = useState('')
     const [genreList, setGenreList] = useState(['All Genres', 'Action', 'Sci-Fi', 'Thriller']);
     const [currentGenre, setCurrentGenre] = useState('All Genres')
+
+    const { removeFromWatchList, watchList, setWatchList } = React.useContext(WatchListContext);
 
     useEffect(() => {
         const moviesFromLS = localStorage.getItem('movies');
         if (!moviesFromLS) return;
 
-        setWatchListArr(JSON.parse(moviesFromLS))
+        setWatchList(JSON.parse(moviesFromLS))
     }, [])
 
     // setting genre filters...
     useEffect(() => {
-        let gNamesArr = watchListArr.map(movie => {
+        let gNamesArr = watchList.map(movie => {
             return getGenreFromId(movie.genre_ids[0])
         });
         let uniqueGenres = new Set(gNamesArr);
         setGenreList(['All Genres', ...uniqueGenres])
-    }, [watchListArr])
+    }, [watchList])
 
     const getGenreFromId = id => {
         return GENRE_IDS_MAP[id];
@@ -29,15 +32,15 @@ function WatchList() {
 
     const handleAscRatings = () => {
         console.log('asc order...')
-        const sortedAscArr = watchListArr.sort((movie1, movie2) => movie1.vote_average - movie2.vote_average);
+        const sortedAscArr = watchList.sort((movie1, movie2) => movie1.vote_average - movie2.vote_average);
         console.log("sortedAscArr", sortedAscArr)
-        setWatchListArr([...sortedAscArr]);
+        setWatchList([...sortedAscArr]);
     }
 
     const handleDescRatings = () => {
         console.log('desc order...')
-        const sortedDescArr = watchListArr.sort((movie1, movie2) => movie2.vote_average - movie1.vote_average);
-        setWatchListArr([...sortedDescArr]);
+        const sortedDescArr = watchList.sort((movie1, movie2) => movie2.vote_average - movie1.vote_average);
+        setWatchList([...sortedDescArr]);
     }
 
     const handleSearch = (ev) => {
@@ -49,6 +52,12 @@ function WatchList() {
     const handleGenreFilter = genre => {
         setCurrentGenre(genre)
     }
+
+    // const removeFromWatchList = movie => {
+    //     // i have to find that movie in the watchListarray ; then delte that object from the array
+    //     const restOfMovies = watchList.filter((movieObj) => movieObj.id !== movie.id);
+    //     setWatchList(restOfMovies);
+    // }
 
     return (
         <>
@@ -98,10 +107,15 @@ function WatchList() {
                                     Genre
                                 </div>
                             </th>
+                            <th>
+                                <div className="flex ">
+                                    Delete
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-x-gray-100 border-t border-gray-100">
-                        {watchListArr
+                        {watchList
                             .filter((movie) => {
                                 if (currentGenre === 'All Genres') {
                                     return true
@@ -122,6 +136,11 @@ function WatchList() {
                                     {movie.genre_ids.map((genreId) => <div key={genreId}>{getGenreFromId(genreId)}</div>)}
                                     {/* {getGenreFromId(movie.genre_ids[0])} */}
                                 </td>
+
+                                <td onClick={() => removeFromWatchList(movie)} className=" text-red-500">
+                                    Delete
+                                </td>
+
                             </tr>)}
 
                     </tbody>
