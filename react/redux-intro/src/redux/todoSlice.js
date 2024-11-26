@@ -13,6 +13,7 @@ const todoSlice = createSlice({
         },
         setTodoInputValue(state, action) {
             // entered input value lies in action.payload.
+            // action = { type: '', payload: '' }
             state.value = action.payload;
             console.log(action, 'action in setValue function');
         }
