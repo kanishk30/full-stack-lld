@@ -5,28 +5,39 @@ import axios from 'axios';
 import { WatchListContext } from "../MovieContext";
 import { useSelector, useDispatch } from 'react-redux';
 import { handleNext, handlePrev } from '../redux/paginationSlice'
+
+import { fetchMovieMiddleware } from '../redux/middleware/fetchMovieMiddleware'
+
+
 function Movies() {
     const dispatch = useDispatch()
-    const [movies, setMovies] = useState([]);
+    // const [movies, setMovies] = useState([]);
+
+    const { loading, error, movies } = useSelector((state) => state.movies);
+
     const pageNo = useSelector((state) => state.pagination.pageNo)
     // const [watchList, setWatchList] = useState([]);
 
     const { addToWatchList, removeFromWatchList, watchList, setWatchList } = useContext(WatchListContext);
 
-
     useEffect(() => {
-        axios.get('https://api.themoviedb.org/3/trending/movie/day', {
-            params: {
-                api_key: 'e278e3c498ab14e0469bf6d86da17045',
-                language: 'en-US',
-                page: pageNo
-            }
-        }).then((response) => {
-            console.log(response.data.results)
-            setMovies(response.data.results)
-        })
-            .catch(e => console.log(e))
+        dispatch(fetchMovieMiddleware())
     }, [pageNo])
+
+
+    // useEffect(() => {
+    //     axios.get('https://api.themoviedb.org/3/trending/movie/day', {
+    //         params: {
+    //             api_key: 'e278e3c498ab14e0469bf6d86da17045',
+    //             language: 'en-US',
+    //             page: pageNo
+    //         }
+    //     }).then((response) => {
+    //         console.log(response.data.results)
+    //         setMovies(response.data.results)
+    //     })
+    //         .catch(e => console.log(e))
+    // }, [pageNo])
 
     // read from LS for watchlist...
 
@@ -51,6 +62,14 @@ function Movies() {
     //     setWatchList(filteredMovies);
     //     localStorage.setItem("movies", JSON.stringify(filteredMovies))
     // }
+
+    if (loading) {
+        return <h3>loading...</h3>
+    }
+
+    if (error) {
+        return <h3>error...</h3>
+    }
 
     return (
         <div>
