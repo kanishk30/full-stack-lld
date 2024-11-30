@@ -7,34 +7,16 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Contact from './components/Contact';
 // import Profile from './components/Profile';
 // import Navbar from './components/Navbar';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 
+// lazy loadng the components...
+const Home = lazy(() => import('./components/Home'))
+const About = lazy(() => import('./components/About'))
+const Contact = lazy(() => import('./components/Contact'))
+const Profile = lazy(() => import('./components/Profile'))
+
 function App() {
-  const [Home, setHome] = useState(null)
-  const [About, setAbout] = useState(null)
-  const [Contact, setContact] = useState(null)
-  const [Profile, setProfile] = useState(null)
-
-  useEffect(() => {
-    // preload home page [DYNAMIC IMPORT]
-    import('./components/Home').then((module) => setHome(() => module.default))
-  }, [])
-
-  const loadHome = () => {
-    import('./components/Home').then((module) => setHome(() => module.default))
-  }
-  const loadAbout = () => {
-    import('./components/About').then((module) => setAbout(() => module.default))
-  }
-  const loadContact = () => {
-    import('./components/Contact').then((module) => setContact(() => module.default))
-  }
-  const loadProfile = () => {
-    import('./components/Profile').then((module) => setProfile(() => module.default))
-  }
-
   return (
     // <div className="App">
     //   <header className="App-header">
@@ -58,25 +40,28 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to='/' onClick={loadHome}>Home</Link>
+              <Link to='/'>Home</Link>
             </li>
             <li>
-              <Link to='/profile' onClick={loadProfile}>Profile</Link>
+              <Link to='/profile' >Profile</Link>
             </li>
             <li>
-              <Link to='/about' onClick={loadAbout}>About</Link>
+              <Link to='/about'>About</Link>
             </li>
             <li>
-              <Link to='/contact' onClick={loadContact}>Contact</Link>
+              <Link to='/contact' >Contact</Link>
             </li>
           </ul>
         </nav>
-        <Routes>
-          <Route path='/' element={Home ? <Home /> : <div>Loading....</div>} />
-          <Route path='/about' element={About ? <About /> : <div>Loading....</div>} />
-          <Route path='/contact' element={Contact ? <Contact /> : <div>Loading....</div>} />
-          <Route path='/profile' element={Profile ? <Profile /> : <div>Loading....</div>} />
-        </Routes>
+        {/* fallback component until laily doenloading the component isnt over... */}
+        <Suspense fallback={<div>loading....</div>}>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/profile' element={<Profile />} />
+          </Routes>
+        </Suspense>
       </div>
     </BrowserRouter>
   );
