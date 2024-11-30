@@ -60,14 +60,14 @@ function App() {
         <ItemsList />
         {/* fallback component until laily doenloading the component isnt over... */}
 
-        {/* <Suspense fallback={<div>loading....</div>}>
+        <Suspense fallback={<div>loading....</div>}>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/profile' element={<Profile />} />
           </Routes>
-        </Suspense> */}
+        </Suspense>
       </div>
     </BrowserRouter>
   );
