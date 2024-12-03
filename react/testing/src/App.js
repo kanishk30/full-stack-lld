@@ -12,6 +12,8 @@ import { Link } from 'react-router-dom';
 
 import ArraySum from './components/ArraySum'
 import ItemsList from './components/Callback';
+import FocusInputComponent from './components/UseRefExample';
+import UseRefTimer from './components/UseRefTimer'
 
 // lazy loadng the components...
 const Home = lazy(() => import('./components/Home'))
@@ -56,10 +58,15 @@ function App() {
             </li>
           </ul>
         </nav>
-        <ArraySum />
-        <ItemsList />
-        {/* fallback component until laily doenloading the component isnt over... */}
+        {/* <ArraySum />
+        <ItemsList /> */}
 
+
+        <FocusInputComponent />
+        <UseRefTimer />
+
+        {/* fallback component until laily doenloading the component isnt over... */}
+        {/* 
         <Suspense fallback={<div>loading....</div>}>
           <Routes>
             <Route path='/' element={<Home />} />
@@ -67,7 +74,8 @@ function App() {
             <Route path='/contact' element={<Contact />} />
             <Route path='/profile' element={<Profile />} />
           </Routes>
-        </Suspense>
+        </Suspense> */}
+
       </div>
     </BrowserRouter>
   );
