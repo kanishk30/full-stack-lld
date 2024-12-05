@@ -8,9 +8,13 @@ import useVisibility from './useVisibility';
 import Welcome from './Welcome';
 import TodoList from './TodoList';
 
-function App() {
 
+import withLoading from './HocExample';
+import DataComponent from './DataComponent';
+
+function App() {
   const { isVisible, show, hide, toggle } = useVisibility(false);
+  const Enhanced = withLoading(DataComponent)
 
   return (
     <div>
@@ -22,7 +26,8 @@ function App() {
       <button onClick={toggle}>Toggle modal</button>
       <Modal isVisible={isVisible} hide={hide} /> */}
       {/* <Welcome name='John' /> */}
-      <TodoList />
+      {/* <TodoList /> */}
+      <Enhanced data='Hi, im the data!!' />
     </div>
   )
 }
